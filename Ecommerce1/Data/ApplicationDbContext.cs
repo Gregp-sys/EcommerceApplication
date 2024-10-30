@@ -70,41 +70,9 @@ namespace Ecommerce1.Data
                 new Product { Id_product = 8, Name = "Chicken Breast", Description = "Skinless Boneless Chicken Breast, 1 lb", Price = 4.99m, SKU = "MEA-CHK-008", Category = "Meat", Created = "2023-10-08 09:30:00", Modified = "2023-10-12 11:45:00", Id_discount = 4 }
             );
 
-            // Sessions
-            builder.Entity<Shopping_Session>().HasData(
-                new Shopping_Session { Id_Shop_Session = 1, Id_AppUser = 1, Total_price = 5.00m, Created = "2023-10-12", Modified = "2023-10-12" },
-                new Shopping_Session { Id_Shop_Session = 2, Id_AppUser = 2, Total_price = 8.50m, Created = "2023-10-13", Modified = "2023-10-13" },
-                new Shopping_Session { Id_Shop_Session = 3, Id_AppUser = 3, Total_price = 3.75m, Created = "2023-10-14", Modified = "2023-10-14" }
-            );
-
-            // Cart Items
-            builder.Entity<Cart_item>().HasData(
-                new Cart_item { Id_cart = 1, Id_product = 1, Id_Shop_Session = 1, Quantity = 2, Created = "2023-10-15", Modified = "2023-10-15" },
-                new Cart_item { Id_cart = 2, Id_product = 2, Id_Shop_Session = 1, Quantity = 1, Created = "2023-10-15", Modified = "2023-10-15" },
-                new Cart_item { Id_cart = 3, Id_product = 5, Id_Shop_Session = 2, Quantity = 1, Created = "2023-10-16", Modified = "2023-10-16" }
-            );
-
-            // Orders
-            builder.Entity<Order>().HasData(
-                new Order { Id_Order = 1, Id_product = 1, Created = "2023-10-17", Modified = "2023-10-17" },
-                new Order { Id_Order = 2, Id_product = 2, Created = "2023-10-18", Modified = "2023-10-18" },
-                new Order { Id_Order = 3, Id_product = 5, Created = "2023-10-18", Modified = "2023-10-18" }
-            );
-
-            // Order Details
-            builder.Entity<Order_Details>().HasData(
-                new Order_Details { Id_details = 1, Id_Order = 1, Id_AppUser = 52, Created = "2023-10-19", Modified = "2023-10-19" },
-                new Order_Details { Id_details = 2, Id_Order = 2, Id_AppUser = 51, Created = "2023-10-19", Modified = "2023-10-19" },
-                new Order_Details { Id_details = 3, Id_Order = 3, Id_AppUser = 553, Created = "2023-10-19", Modified = "2023-10-19" }
-            );
-
-            // Payments
-            builder.Entity<Payment>().HasData(
-                new Payment { Id_payments = 1, Id_Order = 1, Amount = 5.00m, Provider = "Paypal", Status = "Completed", Created = "2023-10-20", Modified = "2023-10-20" },
-                new Payment { Id_payments = 2, Id_Order = 2, Amount = 8.50m, Provider = "Credit Card", Status = "Pending", Created = "2023-10-21", Modified = "2023-10-21" },
-                new Payment { Id_payments = 3, Id_Order = 3, Amount = 8.50m, Provider = "Credit Card", Status = "Pending", Created = "2023-10-21", Modified = "2023-10-21" }
+   
                
-            );
+            
         }
     }
 }
