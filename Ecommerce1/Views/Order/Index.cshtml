@@ -1,0 +1,47 @@
+﻿@using Ecommerce1.Views.ViewModel
+@model List<CartItemViewModel>
+
+<h2>Order Summary</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null || !Model.Any())
+        {
+            <tr>
+                <td colspan="4" class="text-center">Your order is empty.</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@(item.Quantity * item.Price)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@if (Model != null && Model.Any())
+{
+    <div class="d-flex justify-content-end">
+        <strong>Total: @Model.Sum(item => item.Quantity * item.Price).ToString("C")</strong>
+    </div>
+
+    <form asp-action="CompleteOrder" asp-controller="Order" method="post">
+        <input type="hidden" name="sessionId" value="@Model.FirstOrDefault()?.Id_Shopping_Session" />
+        <button type="submit" class="btn btn-primary mt-3">Complete Order</button>
+    </form>
+}

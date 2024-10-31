@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<h2>Order Confirmation</h2>
+
+@if (TempData["OrderMessage"] != null)
+{
+    <p>@TempData["OrderMessage"]</p>
+}
+
+<p>Thank you for your purchase! Your order has been successfully placed.</p>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-primary">Continue Shopping</a>

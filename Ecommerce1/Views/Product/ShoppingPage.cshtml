@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Ecommerce1.Data.Product>
+
+<div class="container">
+    <h2 class="text-primary">Product List</h2>
+
+    @if (Model != null && Model.Any())
+
+    {
+        <div class="product-list">
+            @foreach (var product in Model)
+
+            {
+                <div class="product-item border rounded p-3 mb-3">
+                    <h3>@product.Name</h3>
+                    <p>Price: @product.Price.ToString("C")</p>
+                    <p>Description: @product.Description</p>
+                    <p>SKU: @product.SKU</p>
+                    <p>Category: @product.Category</p>
+                    <p>Created: @product.Created</p>
+                    <p>Last Modified: @product.Modified</p>
+
+                    @if (product.Discount != null)
+
+                    {
+                        <p>Discount: @product.Discount.Name - @product.Discount.Percent %</p>
+                    }
+
+                   
+
+                    <!-- Add to Cart form -->
+                    <form asp-action="AddToCart" asp-controller="Cart" method="post" class="mt-2">
+                        <input type="hidden" name="productId" value="@product.Id_product" />
+                        <input type="number" name="quantity" value="1" min="1" max="10" class="form-control mb-2" />
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            }
+        </div>
+    }
+
+    else
+
+    {
+        <p>No products available.</p> <!-- Message when no products are found -->
+    }
+</div>
